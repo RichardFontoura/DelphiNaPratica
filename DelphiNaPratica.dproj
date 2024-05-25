@@ -104,18 +104,18 @@
             <Form>frmPrincipal</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Model\UConexao.pas"/>
         <DCCReference Include="View\UClientesView.pas">
             <Form>frmClientes</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Model\UFuncoesUtil.pas"/>
-        <DCCReference Include="Model\UEstadoTelaUtil.pas"/>
-        <DCCReference Include="Model\UMensagemUtil.pas"/>
         <DCCReference Include="Model\UEndereco.pas"/>
         <DCCReference Include="Model\UCliente.pas"/>
         <DCCReference Include="Model\UClienteDAO.pas"/>
         <DCCReference Include="Controller\UClienteController.pas"/>
+        <DCCReference Include="Model\Util\UEstadoTelaUtil.pas"/>
+        <DCCReference Include="Model\Util\UFuncoesUtil.pas"/>
+        <DCCReference Include="Model\Util\UMensagemUtil.pas"/>
+        <DCCReference Include="Model\BD\UConexao.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

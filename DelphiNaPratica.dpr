@@ -3,15 +3,15 @@ program DelphiNaPratica;
 uses
   Vcl.Forms,
   UPrincipalView in 'View\UPrincipalView.pas' {frmPrincipal},
-  UConexao in 'Model\UConexao.pas',
   UClientesView in 'View\UClientesView.pas' {frmClientes},
-  UFuncoesUtil in 'Model\UFuncoesUtil.pas',
-  UEstadoTelaUtil in 'Model\UEstadoTelaUtil.pas',
-  UMensagemUtil in 'Model\UMensagemUtil.pas',
   UEndereco in 'Model\UEndereco.pas',
   UCliente in 'Model\UCliente.pas',
   UClienteDAO in 'Model\UClienteDAO.pas',
-  UClienteController in 'Controller\UClienteController.pas';
+  UClienteController in 'Controller\UClienteController.pas',
+  UEstadoTelaUtil in 'Model\Util\UEstadoTelaUtil.pas',
+  UFuncoesUtil in 'Model\Util\UFuncoesUtil.pas',
+  UMensagemUtil in 'Model\Util\UMensagemUtil.pas',
+  UConexao in 'Model\BD\UConexao.pas';
 
 {$R *.res}
 
