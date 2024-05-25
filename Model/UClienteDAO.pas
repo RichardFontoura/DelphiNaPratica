@@ -19,13 +19,14 @@ type
          function RetornaSQLDeleta   : String;
       public
          constructor Create(pConexao : TZConnection);
-         function  RetornaColecao(pCondicao : String = '') : TColCliente;
-         function  Retorna(pCliente : String) : TCliente;
-         function  Insere(pCliente  : TCliente; pReturn: String = '') : Boolean;
-         function  InsereColecao(pCliente : TColCliente) : Boolean;
-         function  Update(pCliente : TCliente) : Boolean;
-         function  Deleta(pCliente : String) : Boolean;
-         function  UpdateColecao(pCliente : TColCliente):Boolean;
+         function RetornaColecao(pCondicao : String = '') : TColCliente;
+         function Retorna(pCliente : Integer) : TCliente;
+         function Insere(pCliente  : TCliente) : Boolean;
+         function InsereColecao(pCliente : TColCliente) : Boolean;
+         function Update(pCliente : TCliente) : Boolean;
+         function Deleta(pCliente : Integer) : Boolean;
+         function UpdateColecao(pCliente : TColCliente):Boolean;
+         function RetornaUltimoId(pCondicao : String) : TCliente;
    End;
 
 implementation
@@ -40,31 +41,31 @@ end;
 function TClienteDAO.RetornaSQL: String;
 begin
    Result :=
-      'SELECT      '#13 +
-      '   Id       '#13 +
-      '   Nome     '#13 +
-      '   Ativo    '#13 +
-      '   CEP      '#13 +
-      '   Cidade   '#13 +
-      '   UF       '#13 +
-      '   Endereco '#13 +
-      '   Numero   '#13 +
-      'FROM Cliente';
+      'SELECT       '#13 +
+      '   Id,       '#13 +
+      '   Nome,     '#13 +
+      '   Ativo,    '#13 +
+      '   CEP,      '#13 +
+      '   Cidade,   '#13 +
+      '   UF,       '#13 +
+      '   Endereco, '#13 +
+      '   Numero    '#13 +
+      'FROM Cliente ';
 end;
 
 function TClienteDAO.RetornaSQLComChave: String;
 begin
    Result :=
-      'SELECT      '#13 +
-      '   Id       '#13 +
-      '   Nome     '#13 +
-      '   Ativo    '#13 +
-      '   CEP      '#13 +
-      '   Cidade   '#13 +
-      '   UF       '#13 +
-      '   Endereco '#13 +
-      '   Numero   '#13 +
-      'FROM Cliente'#13 +
+      'SELECT       '#13 +
+      '   Id,       '#13 +
+      '   Nome,     '#13 +
+      '   Ativo,    '#13 +
+      '   CEP,      '#13 +
+      '   Cidade,   '#13 +
+      '   UF,       '#13 +
+      '   Endereco, '#13 +
+      '   Numero    '#13 +
+      'FROM Cliente '#13 +
       'WHERE Id = :Id';
 end;
 
@@ -86,7 +87,7 @@ begin
       '    :CEP,              '#13+
       '    :Cidade,           '#13+
       '    :UF,               '#13+
-      '    :Endereco          '#13+
+      '    :Endereco,         '#13+
       '    :Numero            '#13+
       ')                      ';
 end;
@@ -100,7 +101,7 @@ begin
       '    CEP               = :CEP,        '#13+
       '    Cidade            = :Cidade,     '#13+
       '    UF                = :UF,         '#13+
-      '    Endereco          = :Endereco    '#13+
+      '    Endereco          = :Endereco,   '#13+
       '    Numero            = :Numero      '#13+
       'WHERE Id = :Id                       ';
 end;
@@ -112,19 +113,18 @@ begin
       'WHERE Id = :Id      ';
 end;
 
-function TClienteDAO.Insere(pCliente: TCliente; pReturn : String): Boolean;
+function TClienteDAO.Insere(pCliente: TCliente): Boolean;
 var
-   xQry : TZQuery;
+   xQry    : TZQuery;
+   xReturn : String;
 begin
-   Result := False;
-   xQry := TZQuery.Create(Nil);
+   Result  := False;
+   xReturn := EmptyStr;
+   xQry    := TZQuery.Create(Nil);
    try
       xQry.Connection := Self.vConexao;
 
       xQry.SQL.Text := RetornaSQLInsert;
-
-      if pReturn <> EmptyStr then
-         xQry.SQL.Add('RETURNING ' + pReturn);
 
       xQry.ParamByName('Nome'     ).AsString  := pCliente.Nome;
       xQry.ParamByName('Ativo'    ).AsInteger := pCliente.Ativo;
@@ -136,9 +136,6 @@ begin
 
       try
          xQry.ExecSql;
-
-         if pReturn <> EmptyStr then
-            pCliente.Id := xQry.FieldByName('Id').AsString;
       except
          on E: Exception do
          begin
@@ -170,7 +167,41 @@ begin
    Result := True;
 end;
 
-function TClienteDAO.Retorna(pCliente : String) : TCliente;
+function TClienteDAO.RetornaUltimoId(pCondicao : String): TCliente;
+var
+   xQry : TZQuery;
+begin
+   xQry := TZQuery.Create(Nil);
+   try
+      xQry.Connection := Self.vConexao;
+
+      xQry.SQL.Text := 'SELECT last_insert_rowid() AS ' + pCondicao;;
+
+      xQry.Open;
+
+      if xQry.IsEmpty then
+         exit;
+
+      try
+         Result := TCliente.Create;
+
+         Result.Id := xQry.FieldByName('Id').AsInteger;
+      except
+         on E: Exception do
+         begin
+            raise Exception.Create(               'Ocorreu um erro ao tentar retornar os dados da '+               Self.ClassName + '.' + #13 + 'Motivo: ' + e.Message);
+         end;
+      end;
+   finally
+      if xQry <> nil then
+      begin
+         xQry.Close;
+         FreeAndNil(xQry);
+      end;
+   end;
+end;
+
+function TClienteDAO.Retorna(pCliente : Integer) : TCliente;
 var
    xQry : TZQuery;
 begin
@@ -181,7 +212,7 @@ begin
 
       xQry.Sql.Text := RetornaSQLComChave;
 
-      xQry.ParamByName('Id').AsString := pCliente;
+      xQry.ParamByName('Id').AsInteger := pCliente;
 
       xQry.Open;
 
@@ -190,7 +221,7 @@ begin
 
       Result := TCliente.Create;
 
-      Result.Id       := xQry.FieldByName('Id'      ).AsString;
+      Result.Id       := xQry.FieldByName('Id'      ).AsInteger;
       Result.Nome     := xQry.FieldByName('Nome'    ).AsString;
       Result.Ativo    := xQry.FieldByName('Ativo'   ).AsInteger;
       Result.CEP      := xQry.FieldByName('Cep'     ).AsString;
@@ -238,7 +269,7 @@ begin
       begin
          xCliente := TCliente.Create;
 
-         xCliente.Id       := xQry.FieldByName('Id'      ).AsString;
+         xCliente.Id       := xQry.FieldByName('Id'      ).AsInteger;
          xCliente.Nome     := xQry.FieldByName('Nome'    ).AsString;
          xCliente.Ativo    := xQry.FieldByName('Ativo'   ).AsInteger;
          xCliente.CEP      := xQry.FieldByName('Cep'     ).AsString;
@@ -259,7 +290,7 @@ begin
    end;
 end;
 
-function TClienteDAO.Deleta(pCliente : String): Boolean;
+function TClienteDAO.Deleta(pCliente : Integer): Boolean;
 var
    xQryCep : TZQuery;
 begin
@@ -270,7 +301,7 @@ begin
 
       xQryCep.SQL.Text := RetornaSQLDeleta;
 
-      xQryCep.ParamByName('Id').AsString := pCliente;
+      xQryCep.ParamByName('Id').AsInteger := pCliente;
       try
          xQryCep.ExecSql;
       except
@@ -309,7 +340,7 @@ begin
       xQry.ParamByName('Endereco' ).AsString  := pCliente.Endereco;
       xQry.ParamByName('Numero'   ).AsString  := pCliente.Numero;
 
-      xQry.ParamByName('Id').AsString  := pCliente.Id;
+      xQry.ParamByName('Id').AsInteger  := pCliente.Id;
 
       try
          xQry.ExecSql;

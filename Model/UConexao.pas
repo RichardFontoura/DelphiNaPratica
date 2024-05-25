@@ -39,10 +39,8 @@ begin
 
    Result.Database       := vCaminhoBD;
    Result.HostName       := 'LOCALHOST';
-   Result.Password       := EmptyStr;
    Result.Port           := 0;
    Result.Protocol       := 'sqlite';
-   Result.User           := EmptyStr;
    Result.ClientCodepage := 'UTF-8';
 
    try

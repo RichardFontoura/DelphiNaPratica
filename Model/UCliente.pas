@@ -8,13 +8,13 @@ uses
 type
    TCliente = Class(TEndereco)
       private
-         vId    : String;
+         vId    : Integer;
          vNome  : String;
          vAtivo : Integer;
       public
          constructor Create;
       published
-         property Id    : String  read vId    write vId;
+         property Id    : Integer read vId    write vId;
          property Nome  : String  read vNome  write vNome;
          property Ativo : Integer read vAtivo write vAtivo;
    End;
@@ -32,7 +32,7 @@ constructor TCliente.Create;
 begin
    try
       inherited Create;
-      Self.vId    := EmptyStr;
+      Self.vId    := 0;
       Self.vNome  := EmptyStr;
       Self.vAtivo := 0;
    except

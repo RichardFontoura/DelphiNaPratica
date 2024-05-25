@@ -22,9 +22,9 @@ type
     imgFundo: TImage;
     procedure menSairClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
     procedure menClientesClick(Sender: TObject);
     procedure btnClientesClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,7 +51,7 @@ begin
    Close;
 end;
 
-procedure TfrmPrincipal.FormShow(Sender: TObject);
+procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
    sbrBarraStatus.Panels[0].Text := 'Caminho Banco: ' + TConexao.get.getCaminhoBanco;
 end;

@@ -34,9 +34,6 @@ object frmClientes: TfrmClientes
       item
         Width = 50
       end>
-    ExplicitLeft = 200
-    ExplicitTop = 168
-    ExplicitWidth = 0
   end
   object pnlBotao: TPanel
     Left = 0
@@ -45,7 +42,6 @@ object frmClientes: TfrmClientes
     Height = 55
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 230
     object btnSair: TPngBitBtn
       Left = 460
       Top = 16
@@ -108,10 +104,6 @@ object frmClientes: TfrmClientes
     Height = 163
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 144
-    ExplicitTop = 152
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object grbCad: TGroupBox
       Left = 8
       Top = 8
@@ -224,7 +216,10 @@ object frmClientes: TfrmClientes
         Top = 22
         Width = 43
         Height = 21
+        CharCase = ecUpperCase
+        MaxLength = 2
         TabOrder = 2
+        OnKeyPress = edtUFKeyPress
       end
       object mskCep: TMaskEdit
         Left = 64
@@ -241,7 +236,9 @@ object frmClientes: TfrmClientes
         Top = 49
         Width = 43
         Height = 21
+        MaxLength = 5
         TabOrder = 4
+        OnKeyPress = edtNumeroKeyPress
       end
     end
   end

@@ -11,8 +11,9 @@ type
          constructor Create;
          function GravaCliente(pCliente : TCliente) : Boolean;
          function ExcluiCliente(pCliente : TCliente) : Boolean;
-         function BuscaCliente(pCodCliente : String) : TCliente;
+         function BuscaCliente(pCliente : Integer) : TCliente;
          function PesquisaCliente(pNome : String) : TColCliente;
+         function RetornaUltimoID(pCliente: String): TCliente;
       published
          class function getInstancia : TClienteController;
    end;
@@ -51,7 +52,7 @@ begin
 
          xClienteDAO := TClienteDAO.Create(TConexao.get.getConn);
 
-         if pCliente.Id = EmptyStr then
+         if pCliente.Id = 0 then
          begin
             xClienteDAO.Insere(pCliente);
          end
@@ -69,7 +70,7 @@ begin
    end;
 end;
 
-function TClienteController.BuscaCliente(pCodCliente: String): TCliente;
+function TClienteController.BuscaCliente(pCliente: Integer): TCliente;
 var
    xClienteDAO : TClienteDAO;
 begin
@@ -79,7 +80,30 @@ begin
 
          xClienteDAO := TClienteDAO.Create(TConexao.get.getConn);
 
-         Result := xClienteDAO.Retorna(pCodCliente);
+         Result := xClienteDAO.Retorna(pCliente);
+      finally
+         if (xClienteDAO <> nil) then
+            FreeAndNil(xClienteDAO);
+      end;
+   except
+      on e:exception do
+      begin
+         raise Exception.Create('Falha ao buscar dados da cliente');
+      end;
+   end;
+end;
+
+function TClienteController.RetornaUltimoID(pCliente: String): TCliente;
+var
+   xClienteDAO : TClienteDAO;
+begin
+   try
+      try
+         Result := nil;
+
+         xClienteDAO := TClienteDAO.Create(TConexao.get.getConn);
+
+         Result := xClienteDAO.RetornaUltimoId(pCliente);
       finally
          if (xClienteDAO <> nil) then
             FreeAndNil(xClienteDAO);
@@ -102,7 +126,7 @@ begin
 
          xClienteDAO := TClienteDAO.Create(TConexao.get.getConn);
 
-         if (pCliente.Id = EmptyStr) then
+         if (pCliente.Id = 0) then
          begin
             Exit
          end

@@ -17,7 +17,7 @@ object frmPrincipal: TfrmPrincipal
   Menu = menMenu
   OldCreateOrder = False
   Position = poScreenCenter
-  OnShow = FormShow
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object imgFundo: TImage
@@ -43,9 +43,6 @@ object frmPrincipal: TfrmPrincipal
       item
         Width = 50
       end>
-    ExplicitLeft = 528
-    ExplicitTop = 392
-    ExplicitWidth = 0
   end
   object pnlBotao: TPanel
     Left = 0
