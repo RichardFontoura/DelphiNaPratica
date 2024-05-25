@@ -25,6 +25,8 @@ type
     procedure menClientesClick(Sender: TObject);
     procedure btnClientesClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnFornecedorClick(Sender: TObject);
+    procedure menFornecedoresClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,7 +39,7 @@ var
 implementation
 
 uses
-   UConexao, UClientesView;
+   UConexao, UClientesView, UFornecedorView;
 
 {$R *.dfm}
 
@@ -78,6 +80,32 @@ begin
 
    sbrBarraStatus.Panels[1].Text := 'Clientes';
    frmClientes.Show;
+
+   Screen.Cursor := crArrow;
+end;
+
+procedure TfrmPrincipal.btnFornecedorClick(Sender: TObject);
+begin
+   Screen.Cursor := crHourGlass;
+
+   if frmFornecedor = nil then
+      frmFornecedor := TfrmFornecedor.Create(Application);
+
+   sbrBarraStatus.Panels[1].Text := 'Forncedores';
+   frmFornecedor.Show;
+
+   Screen.Cursor := crArrow;
+end;
+
+procedure TfrmPrincipal.menFornecedoresClick(Sender: TObject);
+begin
+   Screen.Cursor := crHourGlass;
+
+   if frmFornecedor = nil then
+      frmFornecedor := TfrmFornecedor.Create(Application);
+
+   sbrBarraStatus.Panels[1].Text := 'Forncedores';
+   frmFornecedor.Show;
 
    Screen.Cursor := crArrow;
 end;

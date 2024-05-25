@@ -50,6 +50,7 @@ type
     procedure edtIdExit(Sender: TObject);
     procedure edtUFKeyPress(Sender: TObject; var Key: Char);
     procedure edtNumeroKeyPress(Sender: TObject; var Key: Char);
+    procedure mskCepExit(Sender: TObject);
   private
      { Private declarations }
      vKey : Word;
@@ -82,7 +83,7 @@ var
 implementation
 
 uses
-   UPrincipalView, UMensagemUtil;
+   UPrincipalView, UMensagemUtil,UEndereco, UConsultaAPI;
 
 {$R *.dfm}
 
@@ -211,6 +212,36 @@ begin
 
       if (Components[i] is TCheckBox) then
          (Components[i] as TCheckBox) .Checked := False;
+   end;
+end;
+
+procedure TfrmClientes.mskCepExit(Sender: TObject);
+var
+   xObjConsulta : TEndereco;
+begin
+   if vKey = 13 then
+   begin
+      try
+         try
+            xObjConsulta := TConsultaAPI.getInstacia.BuscaCEP(Self, mskCep.Text);
+
+            if xObjConsulta <> nil then
+            begin
+               edtCidade.Text   := xObjConsulta.Cidade;
+               edtEndereco.Text := xObjConsulta.Endereco;
+               edtUF.Text       := xObjConsulta.UF;
+            end;
+         except
+            on e:Exception do
+            begin
+               raise Exception.Create('Falha ao conectar com a API!'#13 +
+                  'Valide se o CEP inserido e realmente valido');
+            end;
+         end;
+      finally
+         if xObjConsulta <> nil then
+            FreeAndNil(xObjConsulta);
+      end;
    end;
 end;
 

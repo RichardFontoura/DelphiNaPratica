@@ -2,32 +2,38 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2024/05/24 19:25:02.000.365,=C:\Users\Richard\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2024/05/24 19:28:09.000.605,C:\DelphiNaPratica\View\UPrincipalView.dfm=C:\Users\Richard\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
-    <Transaction>2024/05/24 19:28:09.000.605,C:\DelphiNaPratica\View\UPrincipalView.pas=C:\Users\Richard\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2024/05/24 19:28:17.000.919,C:\DelphiNaPratica\DelphiNaPratica.dproj=C:\Users\Richard\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2024/05/24 19:28:09.000.605,C:\Users\Richard\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\DelphiNaPratica\View\UPrincipalView.dfm</Transaction>
+    <Transaction>2024/05/24 19:28:09.000.605,C:\Users\Richard\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\DelphiNaPratica\View\UPrincipalView.pas</Transaction>
+    <Transaction>2024/05/24 19:28:17.000.919,C:\Users\Richard\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\DelphiNaPratica\DelphiNaPratica.dproj</Transaction>
     <Transaction>2024/05/24 19:53:20.000.477,=C:\DelphiNaPratica\Unit1.pas</Transaction>
-    <Transaction>2024/05/24 19:54:41.000.876,C:\DelphiNaPratica\Model\UConexao.pas=C:\DelphiNaPratica\Unit1.pas</Transaction>
+    <Transaction>2024/05/24 19:54:41.000.876,C:\DelphiNaPratica\Unit1.pas=C:\DelphiNaPratica\Model\UConexao.pas</Transaction>
     <Transaction>2024/05/24 20:04:15.000.801,=C:\DelphiNaPratica\Unit1.pas</Transaction>
     <Transaction>2024/05/24 20:29:36.000.508,=C:\DelphiNaPratica\Unit1.pas</Transaction>
-    <Transaction>2024/05/24 20:30:01.000.768,C:\DelphiNaPratica\View\UClientesView.pas=C:\DelphiNaPratica\Unit1.pas</Transaction>
-    <Transaction>2024/05/24 20:30:01.000.768,C:\DelphiNaPratica\View\UClientesView.dfm=C:\DelphiNaPratica\Unit1.dfm</Transaction>
+    <Transaction>2024/05/24 20:30:01.000.768,C:\DelphiNaPratica\Unit1.dfm=C:\DelphiNaPratica\View\UClientesView.dfm</Transaction>
+    <Transaction>2024/05/24 20:30:01.000.768,C:\DelphiNaPratica\Unit1.pas=C:\DelphiNaPratica\View\UClientesView.pas</Transaction>
     <Transaction>2024/05/24 21:20:49.000.760,=C:\DelphiNaPratica\Unit1.pas</Transaction>
-    <Transaction>2024/05/24 21:21:08.000.708,C:\DelphiNaPratica\Model\UFuncoesUtil.pas=C:\DelphiNaPratica\Unit1.pas</Transaction>
+    <Transaction>2024/05/24 21:21:08.000.708,C:\DelphiNaPratica\Unit1.pas=C:\DelphiNaPratica\Model\UFuncoesUtil.pas</Transaction>
     <Transaction>2024/05/24 21:37:08.000.336,=C:\DelphiNaPratica\Unit1.pas</Transaction>
-    <Transaction>2024/05/24 21:37:26.000.009,C:\DelphiNaPratica\Model\UEstadoTelaUtil.pas=C:\DelphiNaPratica\Unit1.pas</Transaction>
+    <Transaction>2024/05/24 21:37:26.000.009,C:\DelphiNaPratica\Unit1.pas=C:\DelphiNaPratica\Model\UEstadoTelaUtil.pas</Transaction>
     <Transaction>2024/05/24 21:58:40.000.926,=C:\DelphiNaPratica\Unit1.pas</Transaction>
-    <Transaction>2024/05/24 21:59:33.000.911,C:\DelphiNaPratica\Model\UMensagemUtil.pas=C:\DelphiNaPratica\Unit1.pas</Transaction>
+    <Transaction>2024/05/24 21:59:33.000.911,C:\DelphiNaPratica\Unit1.pas=C:\DelphiNaPratica\Model\UMensagemUtil.pas</Transaction>
     <Transaction>2024/05/24 22:22:35.000.998,=C:\DelphiNaPratica\Unit1.pas</Transaction>
-    <Transaction>2024/05/24 22:28:22.000.244,C:\DelphiNaPratica\Model\UEndereco.pas=C:\DelphiNaPratica\Unit1.pas</Transaction>
+    <Transaction>2024/05/24 22:28:22.000.244,C:\DelphiNaPratica\Unit1.pas=C:\DelphiNaPratica\Model\UEndereco.pas</Transaction>
     <Transaction>2024/05/24 22:28:43.000.158,=C:\DelphiNaPratica\Unit1.pas</Transaction>
-    <Transaction>2024/05/24 22:33:40.000.342,C:\DelphiNaPratica\Model\UCliente.pas=C:\DelphiNaPratica\Unit1.pas</Transaction>
+    <Transaction>2024/05/24 22:33:40.000.342,C:\DelphiNaPratica\Unit1.pas=C:\DelphiNaPratica\Model\UCliente.pas</Transaction>
     <Transaction>2024/05/24 22:36:46.000.261,=C:\DelphiNaPratica\Unit1.pas</Transaction>
-    <Transaction>2024/05/24 22:36:59.000.804,C:\DelphiNaPratica\Model\UClienteDAO.pas=C:\DelphiNaPratica\Unit1.pas</Transaction>
+    <Transaction>2024/05/24 22:36:59.000.804,C:\DelphiNaPratica\Unit1.pas=C:\DelphiNaPratica\Model\UClienteDAO.pas</Transaction>
     <Transaction>2024/05/24 23:46:26.000.988,=C:\DelphiNaPratica\Unit1.pas</Transaction>
-    <Transaction>2024/05/24 23:46:46.000.021,C:\DelphiNaPratica\Controller\UClienteController.pas=C:\DelphiNaPratica\Unit1.pas</Transaction>
-    <Transaction>2024/05/25 12:21:43.726,=C:\DelphiNaPratica\Model\Util\UEstadoTelaUtil.pas</Transaction>
-    <Transaction>2024/05/25 12:21:45.005,=C:\DelphiNaPratica\Model\Util\UFuncoesUtil.pas</Transaction>
-    <Transaction>2024/05/25 12:21:45.011,=C:\DelphiNaPratica\Model\Util\UMensagemUtil.pas</Transaction>
-    <Transaction>2024/05/25 12:21:51.269,=C:\DelphiNaPratica\Model\BD\UConexao.pas</Transaction>
+    <Transaction>2024/05/24 23:46:46.000.021,C:\DelphiNaPratica\Unit1.pas=C:\DelphiNaPratica\Controller\UClienteController.pas</Transaction>
+    <Transaction>2024/05/25 12:21:43.000.726,=C:\DelphiNaPratica\Model\Util\UEstadoTelaUtil.pas</Transaction>
+    <Transaction>2024/05/25 12:21:45.000.005,=C:\DelphiNaPratica\Model\Util\UFuncoesUtil.pas</Transaction>
+    <Transaction>2024/05/25 12:21:45.000.011,=C:\DelphiNaPratica\Model\Util\UMensagemUtil.pas</Transaction>
+    <Transaction>2024/05/25 12:21:51.000.269,=C:\DelphiNaPratica\Model\BD\UConexao.pas</Transaction>
+    <Transaction>2024/05/25 14:17:48.290,=C:\DelphiNaPratica\Unit1.pas</Transaction>
+    <Transaction>2024/05/25 14:24:43.825,C:\DelphiNaPratica\Model\UConsultaCEP.pas=C:\DelphiNaPratica\Unit1.pas</Transaction>
+    <Transaction>2024/05/25 15:57:53.207,=C:\DelphiNaPratica\Model\UConsultaAPI.pas</Transaction>
+    <Transaction>2024/05/25 16:02:56.783,=C:\DelphiNaPratica\Unit1.pas</Transaction>
+    <Transaction>2024/05/25 16:18:36.279,C:\DelphiNaPratica\View\UFornecedorView.dfm=C:\DelphiNaPratica\Unit1.dfm</Transaction>
+    <Transaction>2024/05/25 16:18:36.279,C:\DelphiNaPratica\View\UFornecedorView.pas=C:\DelphiNaPratica\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

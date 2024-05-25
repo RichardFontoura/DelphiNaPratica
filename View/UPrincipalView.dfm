@@ -94,6 +94,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 59
       Caption = 'Fornecedor'
       Layout = blGlyphTop
+      OnClick = btnFornecedorClick
       PngImage.Data = {
         89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
         F40000000473424954080808087C0864880000000970485973000000B1000000
@@ -155,6 +156,7 @@ object frmPrincipal: TfrmPrincipal
       end
       object menFornecedores: TMenuItem
         Caption = 'Fornecedores'
+        OnClick = menFornecedoresClick
       end
     end
     object menSair: TMenuItem

@@ -116,6 +116,11 @@
         <DCCReference Include="Model\Util\UFuncoesUtil.pas"/>
         <DCCReference Include="Model\Util\UMensagemUtil.pas"/>
         <DCCReference Include="Model\BD\UConexao.pas"/>
+        <DCCReference Include="Model\UConsultaAPI.pas"/>
+        <DCCReference Include="View\UFornecedorView.pas">
+            <Form>frmFornecedor</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

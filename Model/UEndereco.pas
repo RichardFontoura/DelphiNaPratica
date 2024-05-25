@@ -13,6 +13,7 @@ type
          vUF       : String;
          vEndereco : String;
          vNumero   : String;
+         vBairro   : String;
       public
          constructor Create;
       published
@@ -21,6 +22,7 @@ type
          property UF       : String read vUF       write vUF;
          property Endereco : String read vEndereco write vEndereco;
          property Numero   : String read vNumero   write vNumero;
+         property Bairro   : String read vBairro   write vBairro;
    End;
 
 implementation
@@ -35,6 +37,7 @@ begin
       Self.vUF       := EmptyStr;
       Self.vEndereco := EmptyStr;
       Self.vNumero   := EmptyStr;
+      Self.Bairro    := EmptyStr;
    except
       on e:exception do
          raise Exception.Create(e.Message);

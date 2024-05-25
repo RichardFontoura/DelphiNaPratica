@@ -11,7 +11,9 @@ uses
   UEstadoTelaUtil in 'Model\Util\UEstadoTelaUtil.pas',
   UFuncoesUtil in 'Model\Util\UFuncoesUtil.pas',
   UMensagemUtil in 'Model\Util\UMensagemUtil.pas',
-  UConexao in 'Model\BD\UConexao.pas';
+  UConexao in 'Model\BD\UConexao.pas',
+  UConsultaAPI in 'Model\UConsultaAPI.pas',
+  UFornecedorView in 'View\UFornecedorView.pas' {frmFornecedor};
 
 {$R *.res}
 
