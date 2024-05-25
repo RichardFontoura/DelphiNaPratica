@@ -1,0 +1,232 @@
+object frmClientes: TfrmClientes
+  Left = 162
+  Top = 70
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = 'Cadastro de Clientes'
+  ClientHeight = 237
+  ClientWidth = 546
+  Color = clBtnFace
+  DefaultMonitor = dmDesktop
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  FormStyle = fsMDIChild
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poDesigned
+  Visible = True
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object sbrBarra: TStatusBar
+    Left = 0
+    Top = 218
+    Width = 546
+    Height = 19
+    Panels = <>
+    ExplicitLeft = 200
+    ExplicitTop = 168
+    ExplicitWidth = 0
+  end
+  object pnlBotao: TPanel
+    Left = 0
+    Top = 163
+    Width = 546
+    Height = 55
+    Align = alBottom
+    TabOrder = 1
+    ExplicitTop = 230
+    object btnSair: TPngBitBtn
+      Left = 460
+      Top = 16
+      Width = 75
+      Height = 25
+      Caption = 'Sair'
+      TabOrder = 1
+      OnClick = btnSairClick
+    end
+    object btnConfirmar: TPngBitBtn
+      Left = 379
+      Top = 16
+      Width = 75
+      Height = 25
+      Caption = 'Confirmar'
+      TabOrder = 0
+    end
+    object btnIncluir: TPngBitBtn
+      Left = 8
+      Top = 16
+      Width = 75
+      Height = 25
+      Caption = 'Incluir'
+      TabOrder = 2
+    end
+    object btnAlterar: TPngBitBtn
+      Left = 89
+      Top = 16
+      Width = 75
+      Height = 25
+      Caption = 'Alterar'
+      TabOrder = 3
+    end
+    object btnExcluir: TPngBitBtn
+      Left = 170
+      Top = 16
+      Width = 75
+      Height = 25
+      Caption = 'Excluir'
+      TabOrder = 4
+    end
+    object btnConsultar: TPngBitBtn
+      Left = 251
+      Top = 16
+      Width = 75
+      Height = 25
+      Caption = 'Consultar'
+      TabOrder = 5
+    end
+  end
+  object pnlCorpo: TPanel
+    Left = 0
+    Top = 0
+    Width = 546
+    Height = 163
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = 144
+    ExplicitTop = 152
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+    object grbCad: TGroupBox
+      Left = 8
+      Top = 8
+      Width = 527
+      Height = 57
+      Caption = 'Dados Clientes  '
+      TabOrder = 0
+      object lblId: TLabel
+        Left = 13
+        Top = 24
+        Width = 10
+        Height = 13
+        Caption = 'Id'
+      end
+      object lblNome: TLabel
+        Left = 95
+        Top = 24
+        Width = 27
+        Height = 13
+        Caption = 'Nome'
+      end
+      object edtNome: TEdit
+        Left = 128
+        Top = 21
+        Width = 339
+        Height = 21
+        TabOrder = 1
+      end
+      object chkAtivo: TCheckBox
+        Left = 473
+        Top = 23
+        Width = 42
+        Height = 17
+        Caption = 'Ativo'
+        TabOrder = 2
+      end
+      object edtId: TEdit
+        Left = 29
+        Top = 21
+        Width = 60
+        Height = 21
+        TabOrder = 0
+      end
+    end
+    object grbEnd: TGroupBox
+      Left = 8
+      Top = 71
+      Width = 527
+      Height = 82
+      Caption = 'Dados Endere'#231'o  '
+      TabOrder = 1
+      object lblCidade: TLabel
+        Left = 161
+        Top = 25
+        Width = 33
+        Height = 13
+        Caption = 'Cidade'
+      end
+      object lblEndereco: TLabel
+        Left = 13
+        Top = 52
+        Width = 45
+        Height = 13
+        Caption = 'Endere'#231'o'
+      end
+      object lblUF: TLabel
+        Left = 453
+        Top = 25
+        Width = 13
+        Height = 13
+        Caption = 'UF'
+      end
+      object lblCEP: TLabel
+        Left = 13
+        Top = 25
+        Width = 19
+        Height = 13
+        Caption = 'CEP'
+      end
+      object lblNumero: TLabel
+        Left = 454
+        Top = 52
+        Width = 12
+        Height = 13
+        Caption = 'N'#186
+      end
+      object edtCidade: TEdit
+        Left = 200
+        Top = 22
+        Width = 247
+        Height = 21
+        TabOrder = 1
+      end
+      object edtEndereco: TEdit
+        Left = 64
+        Top = 49
+        Width = 382
+        Height = 21
+        TabOrder = 3
+      end
+      object edtUF: TEdit
+        Left = 472
+        Top = 22
+        Width = 43
+        Height = 21
+        TabOrder = 2
+      end
+      object mskCep: TMaskEdit
+        Left = 64
+        Top = 22
+        Width = 87
+        Height = 21
+        EditMask = '99999\-999;1;_'
+        MaxLength = 9
+        TabOrder = 0
+        Text = '     -   '
+      end
+      object edtNumero: TEdit
+        Left = 472
+        Top = 49
+        Width = 43
+        Height = 21
+        TabOrder = 4
+      end
+    end
+  end
+end
