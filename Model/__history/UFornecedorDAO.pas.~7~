@@ -1,0 +1,115 @@
+unit UFornecedorDAO;
+
+interface
+
+uses
+   ZAbstractConnection, ZConnection, ZAbstractRODataset, ZAbstractDataset,
+   ZDataset, SimpleDS, DB, Classes, SysUtils, DateUtils, StdCtrls,
+   UFornecedor;
+
+implementation
+
+type
+   TForncedorDAO = Class
+      private vConexao : TZConnection;
+
+      function RetornaSQL         : String;
+      function RetornaSQLComChave : String;
+      function RetornaSQLInsert   : String;
+      function RetornaSQLUpdate   : String;
+      function RetornaSQLDeleta   : String;
+   End;
+
+{ TForncedorDAO }
+
+function TForncedorDAO.RetornaSQL: String;
+begin
+   Result :=
+      'SELECT          '#13 +
+      '   Id,          '#13 +
+      '   CNPJ,        '#13 +
+      '   Nome,        '#13 +
+      '   RazaoSocial, '#13 +
+      '   Ativo,       '#13 +
+      '   CEP,         '#13 +
+      '   Cidade,      '#13 +
+      '   UF,          '#13 +
+      '   Rua,         '#13 +
+      '   Bairro,      '#13 +
+      '   Numero       '#13 +
+      'FROM Fornecedores ';
+end;
+
+function TForncedorDAO.RetornaSQLComChave: String;
+begin
+   Result :=
+      'SELECT            '#13 +
+      '   Id,            '#13 +
+      '   CNPJ,          '#13 +
+      '   Nome,          '#13 +
+      '   RazaoSocial,   '#13 +
+      '   Ativo,         '#13 +
+      '   CEP,           '#13 +
+      '   Cidade,        '#13 +
+      '   UF,            '#13 +
+      '   Rua,           '#13 +
+      '   Bairro,        '#13 +
+      '   Numero         '#13 +
+      'FROM Fornecedores '#13 +
+      'WHERE Id = :Id';
+end;
+
+function TForncedorDAO.RetornaSQLDeleta: String;
+begin
+   Result :=
+      'DELETE FROM Fornecedores '#13+
+      'WHERE Id = :Id           ';
+end;
+
+function TForncedorDAO.RetornaSQLInsert: String;
+begin
+   Result :=
+      'INSERT INTO Fornecedores( '#13 +
+      '    Nome,                 '#13 +
+      '    CNPJ,                 '#13 +
+      '    Ativo,                '#13 +
+      '    RazaoSocial,          '#13 +
+      '    CEP,                  '#13 +
+      '    Cidade,               '#13 +
+      '    UF,                   '#13 +
+      '    Rua,                  '#13 +
+      '    Bairro,               '#13 +
+      '    Numero                '#13 +
+      ')                         '#13 +
+      'VALUES(                   '#13 +
+      '    :Nome,                '#13 +
+      '    :CNPJ,                '#13 +
+      '    :Ativo,               '#13 +
+      '    :RazaoSocial,         '#13 +
+      '    :CEP,                 '#13 +
+      '    :Cidade,              '#13 +
+      '    :UF,                  '#13 +
+      '    :Rua,                 '#13 +
+      '    :Bairro,              '#13 +
+      '    :Numero               '#13 +
+      ')                         ';
+end;
+
+function TForncedorDAO.RetornaSQLUpdate: String;
+begin
+   Result :=
+      'UPDATE Fornecedores SET              '#13 +
+      '    Nome              = :Nome,       '#13 +
+      '    CNPJ              = :CNPJ,       '#13 +
+      '    Ativo             = :Ativo,      '#13 +
+      '    RazaoSocial       = :RazaoSocial,'#13 +
+      '    CEP               = :CEP,        '#13 +
+      '    Cidade            = :Cidade,     '#13 +
+      '    UF                = :UF,         '#13 +
+      '    Rua               = :Rua,        '#13 +
+      '    Bairro,           = :Bairro,     '#13 +
+      '    Numero            = :Numero      '#13 +
+      'WHERE Id = :Id                       ';
+end;
+
+end.

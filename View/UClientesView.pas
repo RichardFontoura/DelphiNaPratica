@@ -205,13 +205,13 @@ begin
    for i := 0 to pred (ComponentCount) do
    begin
       if (Components[i] is TEdit) then
-         (Components[i] as TEdit) .Text := EmptyStr;
+         (Components[i] as TEdit).Text := EmptyStr;
 
       if (Components[i] is TMaskEdit) then
-         (Components[i] as TMaskEdit) .Text := EmptyStr;
+         (Components[i] as TMaskEdit).Text := EmptyStr;
 
       if (Components[i] is TCheckBox) then
-         (Components[i] as TCheckBox) .Checked := False;
+         (Components[i] as TCheckBox).Checked := False;
    end;
 end;
 
@@ -509,10 +509,10 @@ begin
          (Components[i] as TEdit).Enabled := pOpcao;
 
       if (Components[i] is TMaskEdit) then
-         (Components[i] as TMaskEdit) .Enabled := pOpcao;
+         (Components[i] as TMaskEdit).Enabled := pOpcao;
 
       if (Components[i] is TCheckBox) then
-         (Components[i] as TCheckBox) .Enabled := pOpcao;
+         (Components[i] as TCheckBox).Enabled := pOpcao;
    end;
 end;
 
@@ -529,17 +529,17 @@ begin
    case vEstadoTela of
       etPadrao:
       begin
-        HabilitaCampos(False);
-        LimpaTela;
+         HabilitaCampos(False);
+         LimpaTela;
 
-        sbrBarra.Panels[0].Text := EmptyStr;
+         sbrBarra.Panels[0].Text := EmptyStr;
 
-        if (frmClientes <> nil) and
-           (frmClientes.Active) and
-           (btnIncluir.CanFocus) then
-           btnIncluir.SetFocus;
+         if (frmClientes <> nil) and
+            (frmClientes.Active) and
+            (btnIncluir.CanFocus) then
+            btnIncluir.SetFocus;
 
-           Application.ProcessMessages;
+         Application.ProcessMessages;
       end;
 
       etIncluir:

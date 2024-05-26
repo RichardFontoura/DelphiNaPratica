@@ -72,37 +72,37 @@ end;
 function TClienteDAO.RetornaSQLInsert: String;
 begin
    Result :=
-      'INSERT INTO Cliente(   '#13+
-      '    Nome,              '#13+
-      '    Ativo,             '#13+
-      '    CEP,               '#13+
-      '    Cidade,            '#13+
-      '    UF,                '#13+
-      '    Endereco,          '#13+
-      '    Numero             '#13+
-      ')                      '#13+
-      'VALUES(                '#13+
-      '    :Nome,             '#13+
-      '    :Ativo,            '#13+
-      '    :CEP,              '#13+
-      '    :Cidade,           '#13+
-      '    :UF,               '#13+
-      '    :Endereco,         '#13+
-      '    :Numero            '#13+
+      'INSERT INTO Cliente(   '#13 +
+      '    Nome,              '#13 +
+      '    Ativo,             '#13 +
+      '    CEP,               '#13 +
+      '    Cidade,            '#13 +
+      '    UF,                '#13 +
+      '    Endereco,          '#13 +
+      '    Numero             '#13 +
+      ')                      '#13 +
+      'VALUES(                '#13 +
+      '    :Nome,             '#13 +
+      '    :Ativo,            '#13 +
+      '    :CEP,              '#13 +
+      '    :Cidade,           '#13 +
+      '    :UF,               '#13 +
+      '    :Endereco,         '#13 +
+      '    :Numero            '#13 +
       ')                      ';
 end;
 
 function TClienteDAO.RetornaSQLUpdate: String;
 begin
    Result :=
-      'UPDATE Cliente SET                   '#13+
-      '    Nome              = :Nome,       '#13+
-      '    Ativo             = :Ativo,      '#13+
-      '    CEP               = :CEP,        '#13+
-      '    Cidade            = :Cidade,     '#13+
-      '    UF                = :UF,         '#13+
-      '    Endereco          = :Endereco,   '#13+
-      '    Numero            = :Numero      '#13+
+      'UPDATE Cliente SET                   '#13 +
+      '    Nome              = :Nome,       '#13 +
+      '    Ativo             = :Ativo,      '#13 +
+      '    CEP               = :CEP,        '#13 +
+      '    Cidade            = :Cidade,     '#13 +
+      '    UF                = :UF,         '#13 +
+      '    Endereco          = :Endereco,   '#13 +
+      '    Numero            = :Numero      '#13 +
       'WHERE Id = :Id                       ';
 end;
 

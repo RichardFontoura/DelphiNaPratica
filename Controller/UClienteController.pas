@@ -44,7 +44,6 @@ end;
 function TClienteController.GravaCliente(pCliente: TCliente): Boolean;
 var
    xClienteDAO : TClienteDAO;
-   xAux : Integer;
 begin
    try
       try

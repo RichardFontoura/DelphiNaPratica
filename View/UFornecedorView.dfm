@@ -18,8 +18,10 @@ object frmFornecedor: TfrmFornecedor
   Position = poDesigned
   Visible = True
   OnClose = FormClose
+  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnKeyUp = FormKeyUp
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object sbrBarra: TStatusBar
@@ -31,8 +33,6 @@ object frmFornecedor: TfrmFornecedor
       item
         Width = 50
       end>
-    ExplicitLeft = -10
-    ExplicitTop = 218
   end
   object pnlBotao: TPanel
     Left = 0
@@ -41,8 +41,6 @@ object frmFornecedor: TfrmFornecedor
     Height = 55
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = -10
-    ExplicitTop = 163
     object btnSair: TPngBitBtn
       Left = 460
       Top = 16
@@ -70,6 +68,7 @@ object frmFornecedor: TfrmFornecedor
       Height = 25
       Caption = 'Confirmar'
       TabOrder = 0
+      OnClick = btnConfirmarClick
       PngImage.Data = {
         89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
         6100000009704859730000007600000076014E7B26080000001974455874536F
@@ -89,6 +88,7 @@ object frmFornecedor: TfrmFornecedor
       Height = 25
       Caption = 'Incluir'
       TabOrder = 2
+      OnClick = btnIncluirClick
       PngImage.Data = {
         89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
         6100000009704859730000007600000076014E7B26080000001974455874536F
@@ -104,6 +104,7 @@ object frmFornecedor: TfrmFornecedor
       Height = 25
       Caption = 'Alterar'
       TabOrder = 3
+      OnClick = btnAlterarClick
       PngImage.Data = {
         89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
         6100000009704859730000007600000076014E7B26080000001974455874536F
@@ -124,6 +125,7 @@ object frmFornecedor: TfrmFornecedor
       Height = 25
       Caption = 'Excluir'
       TabOrder = 4
+      OnClick = btnExcluirClick
       PngImage.Data = {
         89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
         610000000473424954080808087C086488000000097048597300000076000000
@@ -155,6 +157,7 @@ object frmFornecedor: TfrmFornecedor
       Height = 25
       Caption = 'Consultar'
       TabOrder = 5
+      OnClick = btnConsultarClick
       PngImage.Data = {
         89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
         610000000473424954080808087C08648800000009704859730000042E000004
@@ -180,7 +183,6 @@ object frmFornecedor: TfrmFornecedor
     Height = 179
     Align = alClient
     TabOrder = 2
-    ExplicitHeight = 163
     object grbFor: TGroupBox
       Left = 8
       Top = 8
