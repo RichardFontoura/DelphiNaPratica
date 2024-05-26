@@ -9,13 +9,14 @@ uses
   UClienteDAO in 'Model\UClienteDAO.pas',
   UClienteController in 'Controller\UClienteController.pas',
   UEstadoTelaUtil in 'Model\Util\UEstadoTelaUtil.pas',
-  UFuncoesUtil in 'Model\Util\UFuncoesUtil.pas',
   UMensagemUtil in 'Model\Util\UMensagemUtil.pas',
   UConexao in 'Model\BD\UConexao.pas',
   UConsultaAPI in 'Model\UConsultaAPI.pas',
   UFornecedorView in 'View\UFornecedorView.pas' {frmFornecedor},
   UFornecedor in 'Model\UFornecedor.pas',
-  UFornecedorDAO in 'Model\UFornecedorDAO.pas';
+  UFornecedorDAO in 'Model\UFornecedorDAO.pas',
+  UFornecedorController in 'Controller\UFornecedorController.pas',
+  UValidaCampos in 'Model\UValidaCampos.pas';
 
 {$R *.res}
 

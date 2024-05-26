@@ -257,6 +257,7 @@ object frmFornecedor: TfrmFornecedor
         Width = 46
         Height = 21
         TabOrder = 0
+        OnExit = edtIdExit
       end
       object mskCnpj: TMaskEdit
         Left = 114
@@ -267,6 +268,7 @@ object frmFornecedor: TfrmFornecedor
         MaxLength = 18
         TabOrder = 1
         Text = '  .   .   /    -  '
+        OnExit = mskCnpjExit
       end
       object edtRazao: TEdit
         Left = 90

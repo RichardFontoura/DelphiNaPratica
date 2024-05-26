@@ -7,8 +7,6 @@ uses
    ZDataset, SimpleDS, DB, Classes, SysUtils, DateUtils, StdCtrls,
    UFornecedor;
 
-implementation
-
 type
    TForncedorDAO = Class
       private vConexao : TZConnection;
@@ -29,6 +27,8 @@ type
       function UpdateColecao(pFornecedor : TColForncedor):Boolean;
       function RetornaUltimoId(pCondicao : String) : TForncedor;
    End;
+
+implementation
 
 { TForncedorDAO }
 
@@ -122,7 +122,7 @@ begin
       '    Cidade            = :Cidade,     '#13 +
       '    UF                = :UF,         '#13 +
       '    Rua               = :Rua,        '#13 +
-      '    Bairro,           = :Bairro,     '#13 +
+      '    Bairro            = :Bairro,     '#13 +
       '    Numero            = :Numero      '#13 +
       'WHERE Id = :Id                       ';
 end;
@@ -175,15 +175,15 @@ begin
 
       xQry.SQL.Text := RetornaSQLUpdate;
 
-      xQry.FieldByName('CNPJ'       ).AsString  := pFornecedor.CNPJ;
+      xQry.ParamByName('CNPJ'       ).AsString  := pFornecedor.CNPJ;
       xQry.ParamByName('Nome'       ).AsString  := pFornecedor.Nome;
-      xQry.FieldByName('RazaoSocial').AsString  := pFornecedor.Razao;
+      xQry.ParamByName('RazaoSocial').AsString  := pFornecedor.Razao;
       xQry.ParamByName('Ativo'      ).AsInteger := pFornecedor.Ativo;
       xQry.ParamByName('CEP'        ).AsString  := pFornecedor.CEP;
       xQry.ParamByName('Cidade'     ).AsString  := pFornecedor.Cidade;
       xQry.ParamByName('UF'         ).AsString  := pFornecedor.UF;
-      xQry.FieldByName('Rua'        ).AsString  := pFornecedor.Endereco;
-      xQry.FieldByName('Bairro'     ).AsString  := pFornecedor.Bairro;
+      xQry.ParamByName('Rua'        ).AsString  := pFornecedor.Endereco;
+      xQry.ParamByName('Bairro'     ).AsString  := pFornecedor.Bairro;
       xQry.ParamByName('Numero'     ).AsString  := pFornecedor.Numero;
 
       xQry.ParamByName('Id').AsInteger  := pFornecedor.Id;
@@ -268,15 +268,15 @@ begin
 
       xQry.SQL.Text := RetornaSQLInsert;
 
-      xQry.FieldByName('CNPJ'       ).AsString  := pFornecedor.CNPJ;
+      xQry.ParamByName('CNPJ'       ).AsString  := pFornecedor.CNPJ;
       xQry.ParamByName('Nome'       ).AsString  := pFornecedor.Nome;
-      xQry.FieldByName('RazaoSocial').AsString  := pFornecedor.Razao;
+      xQry.ParamByName('RazaoSocial').AsString  := pFornecedor.Razao;
       xQry.ParamByName('Ativo'      ).AsInteger := pFornecedor.Ativo;
       xQry.ParamByName('CEP'        ).AsString  := pFornecedor.CEP;
       xQry.ParamByName('Cidade'     ).AsString  := pFornecedor.Cidade;
       xQry.ParamByName('UF'         ).AsString  := pFornecedor.UF;
-      xQry.FieldByName('Rua'        ).AsString  := pFornecedor.Endereco;
-      xQry.FieldByName('Bairro'     ).AsString  := pFornecedor.Bairro;
+      xQry.ParamByName('Rua'        ).AsString  := pFornecedor.Endereco;
+      xQry.ParamByName('Bairro'     ).AsString  := pFornecedor.Bairro;
       xQry.ParamByName('Numero'     ).AsString  := pFornecedor.Numero;
 
       try

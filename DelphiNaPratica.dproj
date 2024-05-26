@@ -5,7 +5,7 @@
         <FrameworkType>VCL</FrameworkType>
         <MainSource>DelphiNaPratica.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -95,6 +95,12 @@
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <Icon_MainIcon>Imagens\Logo\prog-delphi02_icon-icons.com_50803 (32).ico</Icon_MainIcon>
+        <UWP_DelphiLogo44>Imagens\Logo\prog-delphi01_icon-icons.com_50804 (512).png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>Imagens\Logo\prog-delphi01_icon-icons.com_50804 (512).png</UWP_DelphiLogo150>
+        <DCC_ExeOutput>C:\DelphiNaPratica\Executavel\</DCC_ExeOutput>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -113,7 +119,6 @@
         <DCCReference Include="Model\UClienteDAO.pas"/>
         <DCCReference Include="Controller\UClienteController.pas"/>
         <DCCReference Include="Model\Util\UEstadoTelaUtil.pas"/>
-        <DCCReference Include="Model\Util\UFuncoesUtil.pas"/>
         <DCCReference Include="Model\Util\UMensagemUtil.pas"/>
         <DCCReference Include="Model\BD\UConexao.pas"/>
         <DCCReference Include="Model\UConsultaAPI.pas"/>
@@ -123,6 +128,8 @@
         </DCCReference>
         <DCCReference Include="Model\UFornecedor.pas"/>
         <DCCReference Include="Model\UFornecedorDAO.pas"/>
+        <DCCReference Include="Controller\UFornecedorController.pas"/>
+        <DCCReference Include="Model\UValidaCampos.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -149,6 +156,13 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
+                <DeployFile LocalName="Imagens\Logo\prog-delphi01_icon-icons.com_50804 (512).png" Configuration="Release" Class="UWP_DelphiLogo44">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets\</RemoteDir>
+                        <RemoteName>Logo44x44.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Win32\Debug\DelphiNaPratica.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>DelphiNaPratica.exe</RemoteName>

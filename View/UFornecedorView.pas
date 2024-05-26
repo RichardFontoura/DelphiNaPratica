@@ -5,8 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Mask, Vcl.StdCtrls, Vcl.Buttons,
-  PngBitBtn, Vcl.ExtCtrls, Vcl.ComCtrls, UestadoTelaUtil, UFornecedor
-  {UFornecedorController};
+  PngBitBtn, Vcl.ExtCtrls, Vcl.ComCtrls, UestadoTelaUtil, UFornecedor,
+  UFornecedorController;
 
 type
   TfrmFornecedor = class(TForm)
@@ -54,6 +54,8 @@ type
     procedure btnExcluirClick(Sender: TObject);
     procedure btnConsultarClick(Sender: TObject);
     procedure btnConfirmarClick(Sender: TObject);
+    procedure edtIdExit(Sender: TObject);
+    procedure mskCnpjExit(Sender: TObject);
   private
     { Private declarations }
      vKey : Word;
@@ -73,6 +75,9 @@ type
      function ProcessaFornecedor    : Boolean;
      function ProcessaFornece       : Boolean;
      function ValidaFornecedor      : Boolean;
+     function ProcessaConsulta      : Boolean;
+     function ProcessaAlteracao     : Boolean;
+     function ProcessaExclusao      : Boolean;
   public
     { Public declarations }
   end;
@@ -83,7 +88,7 @@ var
 implementation
 
 uses
-   UPrincipalView, UMensagemUtil, UEndereco, UConsultaAPI;
+   UPrincipalView, UMensagemUtil, UEndereco, UConsultaAPI, UValidaCampos;
 
 {$R *.dfm}
 
@@ -95,7 +100,7 @@ end;
 
 procedure TfrmFornecedor.btnConfirmarClick(Sender: TObject);
 begin
-   //ProcessaConfirmacao;
+   ProcessaConfirmacao;
 end;
 
 procedure TfrmFornecedor.btnConsultarClick(Sender: TObject);
@@ -136,7 +141,7 @@ begin
       Exit;
 
    edtId.Text       := IntToStr(vObjFornecedor.Id);
-   mskCEP.Text      := vObjFornecedor.CNPJ;
+   mskCnpj.Text     := vObjFornecedor.CNPJ;
    edtNome.Text     := vObjFornecedor.Nome;
    chkAtivo.Checked := RecebeFornecedorAtivo;
    edtRazao.Text    := vObjFornecedor.Razao;
@@ -212,7 +217,7 @@ begin
       begin
          sbrBarra.Panels[0].Text := 'Exclusão';
          if (edtId.Text <> EmptyStr) then
-            //ProcessaExclusao
+            ProcessaExclusao
          else
          begin
             edtId.Enabled := True;
@@ -247,6 +252,16 @@ begin
       end;
 
    end;
+end;
+
+procedure TfrmFornecedor.edtIdExit(Sender: TObject);
+begin
+   if vKey = VK_RETURN then
+   begin
+      ProcessaConsulta;
+   end;
+
+   vKey := VK_CLEAR;
 end;
 
 procedure TfrmFornecedor.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -367,13 +382,52 @@ begin
    end;
 end;
 
+procedure TfrmFornecedor.mskCnpjExit(Sender: TObject);
+var
+   xValida : Boolean;
+begin
+   if vKey = 13 then
+   begin
+      xValida := TValidaDados.getInstancia.ValidaCNPJ(mskCnpj.Text);
+
+      if not xValida then
+      begin
+         TMensagemUtil.Alerta(Self, 'Atenção: Este CNPJ não possui um formato valido!');
+         mskCnpj.Text := EmptyStr;
+         if mskCnpj.CanFocus then
+            mskCnpj.SetFocus;
+      end;
+   end;
+end;
+
+function TfrmFornecedor.ProcessaAlteracao: Boolean;
+begin
+   try
+      Result := False;
+
+      if ProcessaFornecedor then
+      begin
+         TMensagemUtil.Informacao(Self, 'Dados alterados com sucesso');
+
+         vEstadoTela := etPadrao;
+         DefineEstadoTela;
+         Result := True;
+      end;
+   except
+      on e:exception do
+      begin
+         raise Exception.Create('Falha ao alterar dados de fornecedor' + e.Message);
+      end;
+   end;
+end;
+
 function TfrmFornecedor.ProcessaConfirmacao: Boolean;
 begin
    Result := False;
    try
       case vEstadoTela of
          etIncluir   : Result := ProcessaInclusao;
-         //etAlterar   : Result := ProcessaAlteracao;
+         etAlterar   : Result := ProcessaAlteracao;
       end;
 
       if not Result then
@@ -385,6 +439,96 @@ begin
    end;
 
    Result := True;
+end;
+
+function TfrmFornecedor.ProcessaConsulta: Boolean;
+begin
+   try
+      Result := False;
+
+      if edtId.Text = EmptyStr then
+      begin
+         TMensagemUtil.Alerta(Self, 'Código do fornecedor não pode ficar em branco');
+
+         if (edtId.CanFocus) then
+            edtId.SetFocus;
+
+         Exit;
+      end;
+
+      vObjFornecedor :=
+         TForncedor(TFornecedorController.getInstancia.BuscaFornecedor(
+           StrToIntDef(edtId.Text, 0)));
+
+      if (vObjFornecedor <> nil) then
+         CarregaDadosTela
+      else
+      begin
+         TMensagemUtil.Alerta(Self, 'Nenhum fornecedor encontrado para o código informado');
+         LimpaTela;
+
+         if (edtId.CanFocus) then
+            edtId.SetFocus;
+
+         Exit;
+      end;
+
+      DefineEstadoTela;
+      Result := True;
+   except
+      on e:Exception do
+      begin
+         raise Exception.Create('Falha ao consultar os dados de fornecedor'#13 +
+         e.Message);
+      end;
+   end;
+end;
+
+function TfrmFornecedor.ProcessaExclusao: Boolean;
+begin
+   try
+      Result := False;
+
+      if vObjFornecedor = nil then
+      begin
+         TMensagemUtil.Alerta(Self,
+            'Não foi possivel carregar todos os dados cadastrados do fornecedor');
+         LimpaTela;
+         vEstadoTela := etPadrao;
+         DefineEstadoTela;
+         Exit;
+      end;
+
+      try
+         if TMensagemUtil.Pergunta(Self, 'Confirma a exclusão do fornecedor?') then
+         begin
+            Screen.Cursor := crHourGlass;
+            TFornecedorController.getInstancia.ExcluiFornecedor(vObjFornecedor);
+
+            TMensagemUtil.Informacao(Self, 'Fornecedor excluido com sucesso.');
+         end
+         else
+         begin
+            LimpaTela;
+            vEstadoTela := etPadrao;
+            DefineEstadoTela;
+            Exit;
+         end;
+      finally
+         Screen.Cursor := crDefault;
+         Application.ProcessMessages;
+      end;
+      Result := True;
+
+      LimpaTela;
+      vEstadoTela := etPadrao;
+      DefineEstadoTela;
+   except
+      on e:exception do
+      begin
+         raise Exception.Create('Falha ao excluir dados do fornecedor' + e.Message);
+      end;
+   end;
 end;
 
 function TfrmFornecedor.ProcessaFornece: Boolean;
@@ -415,11 +559,13 @@ begin
 
       vObjFornecedor.CNPJ     := mskCNPJ.Text;
       vObjFornecedor.Nome     := edtNome.Text;
+      vObjFornecedor.Razao    := edtRazao.Text;
       vObjFornecedor.Ativo    := TrataFornecedorAtivo;
       vObjFornecedor.CEP      := mskCep.Text;
       vObjFornecedor.Cidade   := edtCidade.Text;
       vObjFornecedor.UF       := edtUF.Text;
       vObjFornecedor.Endereco := edtRua.Text;
+      vObjFornecedor.Bairro   := edtBairro.Text;
       vObjFornecedor.Numero   := edtNumero.Text;
 
       Result := True;
@@ -437,7 +583,7 @@ begin
    try
       if ProcessaFornece then
       begin
-         //TFornecedorController.getInstancia.GravaFornecedor(vObjFornecedor);
+         TFornecedorController.getInstancia.GravaFornecedor(vObjFornecedor);
          Result := True;
       end;
    except
@@ -455,9 +601,9 @@ begin
 
       if ProcessaFornecedor then
       begin
-         //vObjFornecedor :=
-            //TFornecedorController.getInstancia.RetornaUltimoID(
-            //   'Id');
+         vObjFornecedor :=
+            TFornecedorController.getInstancia.RetornaUltimoID(
+               'Id');
 
          TMensagemUtil.Informacao(Self, 'Fornecedor cadastrado com sucesso.'#13 +
          'Codigo Fornecedor: ' + IntToStr(vObjFornecedor.Id));
