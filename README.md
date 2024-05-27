@@ -3,11 +3,17 @@
 # Índice 
 
 - [Introdução](#Introdução)
+- [Requisitos](#Requisitos)
 - [Descrição do Projeto](#Descrição-do-Projeto)
 - [Conclusão](#Conclusão)
 
+# Requisitos
+- Componente Zeoslib (Usado para acesso ao banco de dados SQLite)
+- Componente AcBr (Usado na validação de CNPJ)
+- Componente PngButton (Usando para criar botão que suportem imagens no formato PNG)
+
 # Introdução
-Delphi na prática e um projeto feito em Pascal usando a IDE do Delphi. O software e desenvolvido usando as boas práticas de programação com Orientação a Objetos usando herança e polimorfismo.
+Delphi na prática e um projeto feito em Pascal usando a IDE do Delphi 10.3. O software e desenvolvido usando as boas práticas de programação com Orientação a Objetos usando herança e polimorfismo.
 Também e usado o componente do AcBr para fazer a validação do campo de CNPJ no cadastro de fornecedores.
 Outro detalhe é que e utilizado a API da BrasilAPI (https://brasilapi.com.br/docs#tag/CEP), consumir JSON e trazer dados de Endereços para clientes e fornecedores.
 
